@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World Page</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>This is a simple "Hello World" example.</p>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meme Website</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        img { max-width: 90%; height: auto; border-radius: 10px; }
+        button { margin-top: 20px; padding: 10px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <h1>Random Meme</h1>
+    <h3 id="meme-title"></h3>
+    <img id="meme-img" src="" alt="Meme will appear here">
+    <br>
+    <button onclick="loadMeme()">Get New Meme</button>
+
+    <script>
+        async function loadMeme() {
+            const res = await fetch("/get_meme");
+            const data = await res.json();
+            document.getElementById("meme-title").innerText = data.title;
+            document.getElementById("meme-img").src = data.url;
+        }
+        loadMeme(); // load first meme automatically
+    </script>
+</body>
+</html>
